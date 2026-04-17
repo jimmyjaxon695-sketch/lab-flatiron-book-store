@@ -6,7 +6,6 @@ const bookStore = {
             title: 'Eloquent JavaScript: A Modern Introduction to Programming',
             author: 'Marjin Haverbeke',
             imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51IKycqTPUL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg',
-            
         },
         {
             id:2,
@@ -25,11 +24,10 @@ const bookStore = {
             title: 'JavaScript: The Definitive Guide',
             author: 'David Flanagan',
             imageUrl: "https://images-na.ssl-images-amazon.com/images/I/51wijnc-Y8L._SX379_BO1,204,203,200_.jpg"
-            
         },
         {
             id:5,
-            title: 'You Don’t Know JS',
+            title: "You Don't Know JS",
             author: 'Kyle Simpson',
             imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/41T5H8u7fUL._SX331_BO1,204,203,200_.jpg'
         },
@@ -38,10 +36,34 @@ const bookStore = {
             title: 'Cracking the Coding Interview',
             author: 'Gayle Laakmann McDowell',
             imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/41oYsXjLvZL._SY344_BO1,204,203,200_.jpg'
-            
         }
     ]
 }
 
-// Write your code here!
+// Update header
+document.querySelector('#header').textContent = bookStore.name;
 
+// Remove example li
+document.getElementById('delete-this').remove();
+
+// Display books
+const bookList = document.getElementById('book-list');
+
+bookStore.books.forEach(book => {
+    const li = document.createElement('li');
+
+    const h3 = document.createElement('h3');
+    h3.textContent = book.title;
+
+    const p = document.createElement('p');
+    p.textContent = book.author;
+
+    const img = document.createElement('img');
+    img.src = book.imageUrl;
+    img.alt = book.title;
+
+    li.appendChild(h3);
+    li.appendChild(p);
+    li.appendChild(img);
+    bookList.appendChild(li);
+});
